@@ -17,7 +17,7 @@ const hbs = create({
 
 app.use(
     express.urlencoded({
-        extended: true,
+        extended: true
     }),
 );
 app.use(express.json());
@@ -31,6 +31,7 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, './resource/views'));
 app.use(express.static(path.join(__dirname, '/public')));
 
+console.log("1234123")
 // Routes init
 route(app);
 
