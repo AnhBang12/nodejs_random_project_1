@@ -5,6 +5,10 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from 'path';
 import { route } from './routes/index.js';
+import { connect } from './config/db/index.js';
+
+//connect to db
+connect()
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -12,13 +16,13 @@ const port = process.env.PORT || 8080;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const hbs = create({
-  extname: '.hbs',
+    extname: '.hbs',
 });
 
 app.use(
-  express.urlencoded({
-    extended: true,
-  }),
+    express.urlencoded({
+        extended: true,
+    }),
 );
 app.use(express.json());
 
@@ -31,11 +35,9 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, './resource/views'));
 app.use(express.static(path.join(__dirname, '/public')));
 
-console.log('1234123');
-console.log('122');
 // Routes init
 route(app);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`App listening at http://localhost:${port}`);
 });
