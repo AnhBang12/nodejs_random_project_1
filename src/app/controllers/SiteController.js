@@ -1,15 +1,13 @@
-import { CourseModel } from "../models/Course.js";
-import { multipleMongooseToObject } from "../../util/mongoose.js";
+import { CourseModel } from '../models/Course.js';
+import { multipleMongooseToObject } from '../../util/mongoose.js';
 class SiteController {
   // [GET] /home
   home(req, res, next) {
-
     CourseModel.find({})
       .then((courses) => {
-        res.render('home', { courses: multipleMongooseToObject(courses) })
+        res.render('home', { courses: multipleMongooseToObject(courses) });
       })
-      .catch(next)
-
+      .catch(next);
 
     // res.render('home');
   }
