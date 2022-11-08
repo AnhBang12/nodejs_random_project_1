@@ -8,8 +8,6 @@ class SiteController {
         res.render('home', { courses: multipleMongooseToObject(courses) });
       })
       .catch(next);
-
-    // res.render('home');
   }
 
   //[GET] /search
