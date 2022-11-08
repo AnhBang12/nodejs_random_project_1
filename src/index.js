@@ -6,7 +6,7 @@ import { dirname } from 'path';
 import path from 'path';
 import { route } from './routes/index.js';
 import { connect } from './config/db/index.js';
-import methodOverride from 'method-override'
+import methodOverride from 'method-override';
 
 //connect to db
 connect();
@@ -27,10 +27,10 @@ app.use(
   express.urlencoded({
     extended: true,
   }),
-)
-app.use(express.json())
+);
+app.use(express.json());
 
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
 
 // HTTP logger
 // app.use(morgan('combined'))

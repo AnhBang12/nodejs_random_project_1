@@ -8,12 +8,12 @@ class CourseController {
       .then((course) => {
         res.render('courses/show', { course: mongooseToObject(course) });
       })
-      .catch(next)
+      .catch(next);
   }
 
   //[GET] /courses/create
   create(req, res, next) {
-    res.render('courses/create')
+    res.render('courses/create');
   }
 
   //[POST] /courses/store
@@ -25,23 +25,33 @@ class CourseController {
     course
       .save()
       .then(() => res.redirect('/'))
-      .catch((e) => { })
+      .catch((e) => { });
   }
 
   //[GET] /courses/:id/edit
   edit(req, res, next) {
     CourseModel.findById(req.params.id)
-      .then(course => res.render('courses/edit', { course: mongooseToObject(course) }))
-      .catch(next)
+      .then((course) =>
+        res.render('courses/edit', { course: mongooseToObject(course) }),
+      )
+      .catch(next);
   }
 
   //[PUT] /courses/:id
   update(req, res, next) {
     CourseModel.updateOne({ _id: req.params.id }, req.body)
       .then(() => res.redirect('/me/stored/courses'))
-      .catch(next)
+      .catch(next);
   }
 
+  //[DELETE] /courses/:id
+  destroy(req, res, next) {
+    CourseModel.deleteOne({ _id: req.params.id })
+      .then(() => {
+        res.redirect('back')
+      })
+      .catch(next)
+  }
 }
 
 export default new CourseController();
