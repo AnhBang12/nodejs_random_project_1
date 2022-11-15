@@ -25,7 +25,7 @@ class CourseController {
     course
       .save()
       .then(() => res.redirect('/'))
-      .catch((e) => { });
+      .catch((e) => {});
   }
 
   //[GET] /courses/:id/edit
